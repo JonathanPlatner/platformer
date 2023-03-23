@@ -1,3 +1,4 @@
+class_name Move
 extends State
 
 @export var idle_node: NodePath

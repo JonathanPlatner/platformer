@@ -2,14 +2,23 @@ extends State
 
 @export var idle_node: NodePath
 @export var move_node: NodePath
+@export var jump_node: NodePath
 
 @export var speed: float = 100.0
 @export var acceleration: float = 200.0
 @export var gravity: float = 1100.0
 @export var max_fall_speed: float = 400
+@export var coyote_time: float = 0.25
 
 @onready var _idle_state: State = get_node(idle_node)
 @onready var _move_state: State = get_node(move_node)
+@onready var _jump_state: State = get_node(jump_node)
+
+func input(event: InputEvent) -> State:
+	if Input.is_action_just_pressed("jump"):
+		if _previous_state is Move and _state_timer <= coyote_time:
+			return _jump_state
+	return null
 
 func physics_process(delta: float) -> State:
 	var target_velocity = 0.0

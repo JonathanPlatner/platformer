@@ -3,15 +3,14 @@ extends Node
 
 @export var animation_name: String
 
-#var move_player: Callable
-#var player_velocity: Vector2
-#var play_animation: Callable
-
+var _previous_state: State
 var _entity: Entity
+var _state_timer: float = 0.0
 
-func enter() -> void:
+func enter(previous_state: State) -> void:
+	_previous_state = previous_state
 	_entity.animator.play(animation_name)
-#	play_animation.call(animation_name)
+	_state_timer = 0.0
 
 func exit() -> void:
 	pass
@@ -20,6 +19,7 @@ func input(_event: InputEvent) -> State:
 	return null
 
 func process(_delta: float) -> State:
+	_state_timer += _delta
 	return null
 	
 func physics_process(_delta: float) -> State:

@@ -9,8 +9,8 @@ extends State
 
 @onready var _fall_state: State = get_node(fall_node)
 
-func enter():
-	super()
+func enter(previous_state: State):
+	super(previous_state)
 	_entity.velocity.y = -jump_strength
 	
 func physics_process(delta: float) -> State:

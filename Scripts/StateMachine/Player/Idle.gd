@@ -8,8 +8,8 @@ extends State
 @onready var _jump_state: State = get_node(jump_node)
 @onready var _fall_state: State = get_node(fall_node)
 
-func enter():
-	super()
+func enter(previous_state: State):
+	super(previous_state)
 	_entity.velocity = Vector2.ZERO
 	_entity.move_and_slide()
 

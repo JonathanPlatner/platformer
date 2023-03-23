@@ -33,3 +33,5 @@ animation_name = "jump"
 script = ExtResource("5_ve8nl")
 idle_node = NodePath("../Idle")
 move_node = NodePath("../Move")
+jump_node = NodePath("../Jump")
+animation_name = "fall"
